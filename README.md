@@ -30,7 +30,7 @@ TouristHub یک پروژه وب است که به کاربران امکان می�
 
  کلون کردن مخزن:
    ```bash
-   git clone https://github.com/your-username/TouristHub.git
+   git clone https://github.com/erph82/TouristHub.git
    cd TouristHub
    ```
 
