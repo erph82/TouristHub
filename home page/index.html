@@ -1,0 +1,287 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سامانه رزرو اقامتگاه گردشگری</title>
+<!-- اضافه کردن به بخش head -->
+ 
+    <!-- اضافه کردن فونت ایران سنس -->
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://unpkg.com/persian-date@latest/dist/persian-date.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.min.css">
+<script src="https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="styles/main.css">
+<script src="js/main.js" defer></script>
+
+</script>
+</head>
+<body class="bg-gray-50">
+<!-- هدر -->
+<header class="bg-white shadow-sm fixed w-full top-0 z-50">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<!-- لوگو -->
+<div class="flex items-center">
+<a href="/home" class="text-xl font-bold text-blue-600">
+<img src="images/logo.png" alt="لوگو" class="h-10">
+</a>
+</div>
+
+<!-- منوی اصلی -->
+<nav class="hidden md:flex space-x-4 space-x-reverse">
+<a href="/" class="text-gray-700 hover:text-blue-600">صفحه اصلی</a>
+<a href="/attractions" class="text-gray-700 hover:text-blue-600">جاذبه‌های گردشگری</a>
+<a href="/accommodations" class="text-gray-700 hover:text-blue-600">اقامتگاه‌ها</a>
+<a href="/about" class="text-gray-700 hover:text-blue-600">درباره ما</a>
+<a href="/contact" class="text-gray-700 hover:text-blue-600">تماس با ما</a>
+</nav>
+
+<!-- دکمه‌های سمت راست -->
+<div class="flex items-center space-x-4 space-x-reverse">
+<button onclick="toggleSearch(true)" class="text-gray-600 hover:text-blue-600">
+<i class="fas fa-search"></i>
+</button>
+<a href="/login" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+ورود / ثبت‌نام
+</a>
+<!-- دکمه منوی موبایل -->
+<button class="md:hidden text-gray-600" id="mobileMenuButton">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+
+<!-- منوی موبایل -->
+<div class="mobile-menu hidden md:hidden fixed w-full bg-white shadow-lg z-40 top-16" id="mobileMenu">
+<div class="container mx-auto px-4 py-2">
+<a href="/" class="block py-2 text-gray-700 hover:text-blue-600">صفحه اصلی</a>
+<a href="/attractions" class="block py-2 text-gray-700 hover:text-blue-600">جاذبه‌های گردشگری</a>
+<a href="/accommodations" class="block py-2 text-gray-700 hover:text-blue-600">اقامتگاه‌ها</a>
+<a href="/about" class="block py-2 text-gray-700 hover:text-blue-600">درباره ما</a>
+<a href="/contact" class="block py-2 text-gray-700 hover:text-blue-600">تماس با ما</a>
+</div>
+</div>
+
+<!-- قسمت هیرو -->
+<section class="hero-section h-screen flex items-center justify-center text-white text-center mt-16">
+<div class="container mx-auto px-4">
+<h1 class="text-4xl md:text-6xl font-bold mb-6">سفری خاطره‌انگیز را تجربه کنید</h1>
+<p class="text-xl mb-8">بهترین اقامتگاه‌ها و جاذبه‌های گردشگری در انتظار شماست</p>
+<div class="max-w-3xl mx-auto">
+<div class="bg-white p-4 rounded-lg shadow-lg flex flex-wrap items-center justify-between gap-4">
+<div class="flex-1 min-w-[200px]">
+<input type="text" placeholder="کجا می‌خواهید بروید؟" 
+class="w-full p-2 border rounded text-gray-800">
+</div>
+<div class="flex-1 min-w-[200px]">
+    <input type="text" 
+           id="dateInput" 
+           class="w-full p-2 border rounded text-gray-800" 
+           placeholder="تاریخ سفر"
+           readonly>
+</div>
+<button class="bg-blue-600 text-white px-8 py-2 rounded hover:bg-blue-700">
+جستجو
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- جاذبه‌های محبوب -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">جاذبه‌های محبوب گردشگری</h2>
+<div class="swiper attractionsSwiper">
+<div class="swiper-wrapper">
+<!-- جاذبه 1 -->
+<div class="swiper-slide">
+<div class="attraction-card bg-white rounded-lg overflow-hidden shadow-lg">
+<img src="images/attractions/attraction1.jpg" alt="جاذبه 1" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-bold mb-2">تخت جمشدی</h3>
+<p class="text-gray-600 mb-4">شیراز، فارس</p>
+<a href="#" class="text-blue-600 hover:text-blue-800">اطلاعات بیشتر</a>
+</div>
+</div>
+</div>
+<!-- جاذبه 2 -->
+<div class="swiper-slide">
+<div class="attraction-card bg-white rounded-lg overflow-hidden shadow-lg">
+<img src="images/attractions/attraction2.jpg" alt="جاذبه 2" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-bold mb-2">میدان نقش جهان</h3>
+<p class="text-gray-600 mb-4">اصفهان</p>
+<a href="#" class="text-blue-600 hover:text-blue-800">اطلاعات بیشتر</a>
+</div>
+</div>
+</div>
+<!-- جاذبه 3 -->
+<div class="swiper-slide">
+<div class="attraction-card bg-white rounded-lg overflow-hidden shadow-lg">
+<img src="images/attractions/attraction3.jpg" alt="جاذبه 3" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-bold mb-2">برج میلاد</h3>
+<p class="text-gray-600 mb-4">تهران</p>
+<a href="#" class="text-blue-600 hover:text-blue-800">اطلاعات بیشتر</a>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-pagination"></div>
+    
+    <!-- دکمه‌های قبلی/بعدی -->
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+
+</div>
+</div>
+</section>
+
+<!-- اقامتگاه‌های برتر -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">اقامتگاه‌های برتر</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- اقامتگاه 1 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg">
+<img src="images/accommodations/hotel1.jpg" alt="هتل 1" class="w-full h-48 object-cover">
+<div class="p-4">
+<h3 class="text-xl font-bold mb-2">هتل اسپیناس پالاس</h3>
+<p class="text-gray-600 mb-2">تهران</p>
+<div class="flex items-center mb-4">
+<span class="text-yellow-500">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+</span>
+<span class="text-gray-600 mr-2">5.0</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-lg font-bold text-blue-600">از شبی ۲,۵۰۰,۰۰۰ تومان</span>
+<a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">رزرو</a>
+</div>
+</div>
+</div>
+<!-- اقامتگاه‌های بیشتر... -->
+</div>
+</div>
+</section>
+
+<!-- بخش مزایا -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12">چرا ما را انتخاب کنید؟</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- مزیت 1 -->
+<div class="text-center">
+<div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-shield-alt text-2xl text-blue-600"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">رزرو مطمئن</h3>
+<p class="text-gray-600">با ضمانت بازگشت وجه و پشتیبانی ۲۴ ساعته</p>
+</div>
+<!-- مزیت 2 -->
+<div class="text-center">
+<div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-percent text-2xl text-blue-600"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">بهترین قیمت‌ها</h3>
+<p class="text-gray-600">تضمین بهترین قیمت در بازار</p>
+</div>
+<!-- مزیت 3 -->
+<div class="text-center">
+<div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-heart text-2xl text-blue-600"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">تجربه منحصر به فرد</h3>
+<p class="text-gray-600">بهترین اقامتگاه‌ها با امکانات ویژه</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- باکس جستجوی پیشرفته -->
+<div class="search-overlay" id="searchOverlay"></div>
+<div class="search-box" id="searchBox">
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold">جستجوی پیشرفته</h3>
+<button onclick="toggleSearch(false)" class="text-gray-500 hover:text-gray-700">
+<i class="fas fa-times"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<input type="text" id="searchInput" placeholder="جستجو..." 
+class="w-full p-3 border rounded-lg">
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<select name="accommodationType" class="w-full p-3 border rounded-lg">
+<option value="">نوع اقامتگاه</option>
+<option value="hotel">هتل</option>
+<option value="apartment">آپارتمان</option>
+<option value="villa">ویلا</option>
+</select>
+
+<select name="amenities" class="w-full p-3 border rounded-lg">
+<option value="">امکانات</option>
+<option value="pool">استخر</option>
+<option value="parking">پارکینگ</option>
+<option value="wifi">وای‌فای</option>
+</select>
+</div>
+
+<div class="grid grid-cols-2 gap-4">
+<input type="number" name="minPrice" placeholder="حداقل قیمت" 
+class="w-full p-3 border rounded-lg">
+<input type="number" name="maxPrice" placeholder="حداکثر قیمت"
+class="w-full p-3 border rounded-lg">
+</div>
+</div>
+
+<div class="search-results mt-6">
+</div>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>درباره ما</h3>
+          <p>توضیحات مختصر درباره سایت و خدمات آن</p>
+        </div>
+        <div class="footer-section">
+          <h3>لینک‌های مفید</h3>
+          <ul>
+            <li><a href="/faq">سوالات متداول</a></li>
+            <li><a href="/terms">قوانین و مقررات</a></li>
+            <li><a href="/privacy">حریم خصوصی</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>تماس با ما</h3>
+          <p>آدرس: تهران، خیابان ...</p>
+          <p>تلفن: ۰۲۱-XXXXXXXX</p>
+          <p>ایمیل: info@example.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>تمامی حقوق محفوظ است © ۱۴۰۲</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

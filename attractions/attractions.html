@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جاذبه‌های گردشگری</title>
+
+    <!-- فونت ایران‌سنس -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/iran-sans@v1.0.0/dist/font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جاذبه‌های گردشگری</title>
+
+    <!-- فونت وزیر -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Tailwind و Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- استایل‌های اصلی -->
+    <link rel="stylesheet" href="css/attractions.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- هدر -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <!-- لوگو -->
+          <div class="flex items-center">
+            <a href="/" class="text-xl font-bold text-blue-600">
+              <img src="/../home/images/logo.png" alt="لوگو" class="h-10" />
+            </a>
+          </div>
+
+          <!-- منوی اصلی -->
+          <nav class="hidden md:flex space-x-4 space-x-reverse">
+            <a href="/home" class="text-gray-700 hover:text-blue-600"
+              >صفحه اصلی</a
+            >
+            <a
+              href="/attractions.html"
+              class="text-gray-700 hover:text-blue-600"
+              >جاذبه‌های گردشگری</a
+            >
+            <a href="/accommodations" class="text-gray-700 hover:text-blue-600"
+              >اقامتگاه‌ها</a
+            >
+            <a href="/about" class="text-gray-700 hover:text-blue-600"
+              >درباره ما</a
+            >
+            <a href="/contact" class="text-gray-700 hover:text-blue-600"
+              >تماس با ما</a
+            >
+          </nav>
+
+          <!-- دکمه‌های سمت راست -->
+          <div class="flex items-center space-x-4 space-x-reverse">
+            <button
+              onclick="toggleSearch(true)"
+              class="text-gray-600 hover:text-blue-600"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+            <a
+              href="/login"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            >
+              ورود / ثبت‌نام
+            </a>
+            <button class="md:hidden text-gray-600" id="mobileMenuButton">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- منوی موبایل -->
+    <div
+      class="mobile-menu hidden md:hidden fixed w-full bg-white shadow-lg z-40 top-16"
+      id="mobileMenu"
+    >
+      <div class="container mx-auto px-4 py-2">
+        <a href="/" class="block py-2 text-gray-700 hover:text-blue-600"
+          >صفحه اصلی</a
+        >
+        <a
+          href="/attractions.html"
+          class="block py-2 text-gray-700 hover:text-blue-600"
+          >جاذبه‌های گردشگری</a
+        >
+        <a
+          href="/accommodations"
+          class="block py-2 text-gray-700 hover:text-blue-600"
+          >اقامتگاه‌ها</a
+        >
+        <a href="/about" class="block py-2 text-gray-700 hover:text-blue-600"
+          >درباره ما</a
+        >
+        <a href="/contact" class="block py-2 text-gray-700 hover:text-blue-600"
+          >تماس با ما</a
+        >
+      </div>
+    </div>
+
+    <!-- هدر -->
+    <div class="hero">
+      <h1 data-aos="fade-up">کشف جاذبه‌های گردشگری ایران</h1>
+      <p data-aos="fade-up" data-aos-delay="200">
+        با برترین مقاصد گردشگری ایران آشنا شوید و سفری به یادماندنی را تجربه
+        کنید
+      </p>
+    </div>
+
+    <!-- بخش فیلتر -->
+    <section class="filter-section">
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="جستجو در جاذبه‌های گردشگری..."
+          id="searchInput"
+        />
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">همه</button>
+        <button class="filter-btn" data-filter="historical">تاریخی</button>
+        <button class="filter-btn" data-filter="natural">طبیعی</button>
+        <button class="filter-btn" data-filter="cultural">فرهنگی</button>
+        <button class="filter-btn" data-filter="religious">مذهبی</button>
+      </div>
+    </section>
+
+    <!-- محتوای اصلی -->
+    <main class="attractions-container">
+      <div class="attractions-grid" id="attractionsGrid">
+        <!-- تخت جمشید -->
+        <div
+          class="attraction-card"
+          data-aos="fade-up"
+          data-category="historical"
+        >
+          <img
+            src="/images/attraction1.jpg"
+            alt="تخت جمشید"
+            class="attraction-image"
+          />
+          <div class="attraction-content">
+            <h3 class="attraction-title">تخت جمشید</h3>
+            <div class="attraction-location">
+              <i class="fas fa-map-marker-alt"></i>
+              شیراز، استان فارس
+            </div>
+            <p class="attraction-description">
+              تخت جمشید یکی از بزرگترین بناهای تاریخی ایران و از میراث جهانی
+              یونسکو است.
+            </p>
+            <div class="attraction-details">
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <span>4.9</span>
+              </div>
+              <a href="#" class="read-more">
+                اطلاعات بیشتر
+                <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- دریاچه ارومیه -->
+        <div class="attraction-card" data-aos="fade-up" data-category="natural">
+          <img
+            src="images/urmia.jpg"
+            alt="دریاچه ارومیه"
+            class="attraction-image"
+          />
+          <div class="attraction-content">
+            <h3 class="attraction-title">دریاچه ارومیه</h3>
+            <div class="attraction-location">
+              <i class="fas fa-map-marker-alt"></i>
+              آذربایجان غربی
+            </div>
+            <p class="attraction-description">
+              دریاچه ارومیه بزرگترین دریاچه داخلی ایران و یکی از شورترین
+              دریاچه‌های جهان است.
+            </p>
+            <div class="attraction-details">
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <span>4.7</span>
+              </div>
+              <a href="#" class="read-more">
+                اطلاعات بیشتر
+                <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- مسجد شیخ لطف‌الله -->
+        <div
+          class="attraction-card"
+          data-aos="fade-up"
+          data-category="religious"
+        >
+          <img
+            src="images/sheikh-lotfollah.jpg"
+            alt="مسجد شیخ لطف‌الله"
+            class="attraction-image"
+          />
+          <div class="attraction-content">
+            <h3 class="attraction-title">مسجد شیخ لطف‌الله</h3>
+            <div class="attraction-location">
+              <i class="fas fa-map-marker-alt"></i>
+              اصفهان، میدان نقش جهان
+            </div>
+            <p class="attraction-description">
+              شاهکار معماری و کاشی‌کاری دوره صفوی که در ضلع شرقی میدان نقش جهان
+              واقع شده است.
+            </p>
+            <div class="attraction-details">
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <span>4.8</span>
+              </div>
+              <a href="#" class="read-more">
+                اطلاعات بیشتر
+                <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- موزه برج میلاد -->
+        <div
+          class="attraction-card"
+          data-aos="fade-up"
+          data-category="cultural"
+        >
+          <img
+            src="images/milad-tower.jpg"
+            alt="برج میلاد"
+            class="attraction-image"
+          />
+          <div class="attraction-content">
+            <h3 class="attraction-title">برج میلاد</h3>
+            <div class="attraction-location">
+              <i class="fas fa-map-marker-alt"></i>
+              تهران
+            </div>
+            <p class="attraction-description">
+              بلندترین برج ایران و ششمین برج بلند مخابراتی جهان با چشم‌اندازی
+              زیبا از شهر تهران.
+            </p>
+            <div class="attraction-details">
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <span>4.6</span>
+              </div>
+              <a href="#" class="read-more">
+                اطلاعات بیشتر
+                <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>درباره ما</h3>
+            <p>توضیحات</p>
+          </div>
+          <div class="footer-section">
+            <h3>لینک‌های مفید</h3>
+            <ul>
+              <li><a href="/faq">سوالات متداول</a></li>
+              <li><a href="/terms">قوانین و مقررات</a></li>
+              <li><a href="/privacy">حریم خصوصی</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>تماس با ما</h3>
+            <p>آدرس: تهران، خیابان ...</p>
+            <p>تلفن:</p>
+            <p>ایمیل: info@erfan.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>تمامی حقوق محفوظ است © ۱۴۰۲</p>
+        </div>
+      </div>
+    </footer>
+    <!-- اسکریپت‌ها -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/attractions.js"></script>
+    <script>
+      // Toggle mobile menu
+      document
+        .getElementById("mobileMenuButton")
+        .addEventListener("click", () => {
+          document.getElementById("mobileMenu").classList.toggle("hidden");
+        });
+
+      // Close mobile menu on window resize
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          document.getElementById("mobileMenu").classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تأیید رزرو</title>
+    <link rel="stylesheet" href="css/reserve.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>تأیید رزرو</h2>
+
+      <div class="section">
+        <h3>اطلاعات رزرو</h3>
+        <div class="input-group">
+          <label>تاریخ ورود:</label>
+          <input type="text" id="checkInDate" readonly />
+        </div>
+        <div class="input-group">
+          <label>تاریخ خروج:</label>
+          <input type="text" id="checkOutDate" readonly />
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>خدمات اضافی</h3>
+        <div class="checkbox-group">
+          <input type="checkbox" id="breakfast" onchange="updateTotal()" />
+          <label for="breakfast">صبحانه (نفری ۵۰,۰۰۰ تومان)</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="parking" onchange="updateTotal()" />
+          <label for="parking">پارکینگ (روزانه ۳۰,۰۰۰ تومان)</label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>درخواست‌های ویژه</h3>
+        <div class="special-requests">
+          <textarea
+            placeholder="درخواست خاصی دارید؟ اینجا بنویسید..."
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>اطلاعات پرداخت</h3>
+        <div class="price-display">
+          <div>هزینه اقامت: <span id="basePrice">۱,۰۰۰,۰۰۰</span> تومان</div>
+          <div>هزینه خدمات اضافی: <span id="extraPrice">۰</span> تومان</div>
+          <div>
+            <strong
+              >مجموع کل: <span id="totalPrice">۱,۰۰۰,۰۰۰</span> تومان</strong
+            >
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>روش پرداخت:</label>
+          <select id="paymentMethod">
+            <option value="online">پرداخت آنلاین</option>
+            <option value="transfer">کارت به کارت</option>
+          </select>
+        </div>
+      </div>
+
+      <button onclick="confirmReservation()">تأیید و پرداخت</button>
+    </div>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>درباره ما</h3>
+            <p>توضیحات</p>
+          </div>
+          <div class="footer-section">
+            <h3>لینک‌های مفید</h3>
+            <ul>
+              <li><a href="/faq">سوالات متداول</a></li>
+              <li><a href="/terms">قوانین و مقررات</a></li>
+              <li><a href="/privacy">حریم خصوصی</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>تماس با ما</h3>
+            <p>آدرس: ...</p>
+            <p>تلفن: ۰۲۱-XXXXXXXX</p>
+            <p>ایمیل: erfan@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>تمامی حقوق محفوظ است © ۱۴۰۲</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/reserve.js"></script>
+  </body>
+</html>

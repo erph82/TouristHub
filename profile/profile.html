@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پروفایل کاربر</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- هدر -->
+    <header>
+      <div class="header-container">
+        <div class="flex items-center">
+          <a href="/" class="text-xl font-bold text-blue-600">
+            <img src="/../home/images/logo.png" alt="لوگو" class="h-10" />
+          </a>
+        </div>
+
+        <nav>
+          <a href="/home">صفحه اصلی</a>
+          <a href="/attractions.html">جاذبه‌های گردشگری</a>
+          <a href="/accommodations">اقامتگاه‌ها</a>
+          <a href="/about">درباره ما</a>
+          <a href="/contact">تماس با ما</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <button
+            onclick="toggleSearch(true)"
+            class="text-gray-600 hover:text-blue-600"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+          <a
+            href="/login"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          >
+            ورود / ثبت‌نام
+          </a>
+          <button class="md:hidden text-gray-600" id="mobileMenuButton">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">صفحه اصلی</a>
+      <a href="/attractions.html">جاذبه‌های گردشگری</a>
+      <a href="/accommodations">اقامتگاه‌ها</a>
+      <a href="/about">درباره ما</a>
+      <a href="/contact">تماس با ما</a>
+    </div>
+    <main>
+      <div class="container">
+        <div class="sidebar">
+          <div class="profile-header">
+            <img
+              src="https://via.placeholder.com/150"
+              alt="تصویر پروفایل"
+              class="profile-image"
+            />
+            <div class="profile-name">علی محمدی</div>
+            <div class="profile-email">ali@example.com</div>
+          </div>
+          <ul class="menu-items">
+            <li>
+              <button onclick="showSection('dashboard')" class="active">
+                داشبورد
+              </button>
+            </li>
+            <li>
+              <button onclick="showSection('profile')">ویرایش پروفایل</button>
+            </li>
+            <li>
+              <button onclick="showSection('reservations')">رزروهای من</button>
+            </li>
+            <li><button onclick="showSection('settings')">تنظیمات</button></li>
+          </ul>
+        </div>
+
+        <div class="main-content">
+          <div id="dashboard" class="section active">
+            <h2>داشبورد</h2>
+            <div class="stats">
+              <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div>تعداد رزروها</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div>رزروهای آینده</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div>رزروهای گذشته</div>
+              </div>
+            </div>
+            <h3>آخرین رزروها</h3>
+            <div class="reservation-card">
+              <div>هتل پارسیان</div>
+              <div>تاریخ: ۱۴۰۲/۱۲/۲۵ تا ۱۴۰۲/۱۲/۲۷</div>
+              <div>وضعیت: تأیید شده</div>
+            </div>
+          </div>
+
+          <div id="profile" class="section">
+            <h2>ویرایش پروفایل</h2>
+            <div class="form-group">
+              <label>نام و نام خانوادگی</label>
+              <input type="text" value="علی محمدی" />
+            </div>
+            <div class="form-group">
+              <label>ایمیل</label>
+              <input type="email" value="ali@example.com" />
+            </div>
+            <div class="form-group">
+              <label>شماره تماس</label>
+              <input type="tel" value="09123456789" />
+            </div>
+            <button class="btn">ذخیره تغییرات</button>
+          </div>
+
+          <div id="reservations" class="section">
+            <h2>رزروهای من</h2>
+            <div class="reservation-card">
+              <div>هتل پارسیان</div>
+              <div>تاریخ: ۱۴۰۲/۱۲/۲۵ تا ۱۴۰۲/۱۲/۲۷</div>
+              <div>وضعیت: تأیید شده</div>
+            </div>
+            <div class="reservation-card">
+              <div>هتل آزادی</div>
+              <div>تاریخ: ۱۴۰۲/۱۲/۱۵ تا ۱۴۰۲/۱۲/۱۷</div>
+              <div>وضعیت: انجام شده</div>
+            </div>
+          </div>
+
+          <div id="settings" class="section">
+            <h2>تنظیمات</h2>
+            <div class="form-group">
+              <label>زبان سیستم</label>
+              <select class="form-control">
+                <option>فارسی</option>
+                <option>English</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>اعلان‌ها</label>
+              <div>
+                <input type="checkbox" checked /> دریافت ایمیل
+                <input type="checkbox" checked /> دریافت پیامک
+              </div>
+            </div>
+            <button class="btn">ذخیره تنظیمات</button>
+          </div>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>درباره ما</h3>
+              <p>توضیحات مختصر درباره سایت و خدمات آن</p>
+            </div>
+            <div class="footer-section">
+              <h3>لینک‌های مفید</h3>
+              <ul>
+                <li><a href="/faq">سوالات متداول</a></li>
+                <li><a href="/terms">قوانین و مقررات</a></li>
+                <li><a href="/privacy">حریم خصوصی</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>تماس با ما</h3>
+              <p>آدرس: تهران، خیابان ...</p>
+              <p>تلفن: ۰۲۱-XXXXXXXX</p>
+              <p>ایمیل: info@example.com</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>تمامی حقوق محفوظ است © ۱۴۰۲</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="js/profile.js"></script>
+  </body>
+</html>

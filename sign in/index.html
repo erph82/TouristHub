@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ورود به حساب کاربری</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Tahoma, Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(120deg, #3498db, #8e44ad);
+        padding: 20px;
+      }
+
+      .login-container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .header {
+        background: #f8f9fa;
+        padding: 30px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+      }
+
+      .header img {
+        width: 120px;
+        margin-bottom: 15px;
+      }
+
+      .header h2 {
+        color: #333;
+        font-size: 1.5em;
+        margin-bottom: 5px;
+      }
+
+      .header p {
+        color: #666;
+        font-size: 0.9em;
+      }
+
+      .login-form {
+        padding: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #eee;
+        border-radius: 8px;
+        font-size: 1em;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus {
+        border-color: #3498db;
+        outline: none;
+      }
+
+      .form-group i {
+        position: absolute;
+        left: 12px;
+        top: 38px;
+        color: #666;
+      }
+
+      .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .forgot-password {
+        color: #3498db;
+        text-decoration: none;
+        font-size: 0.9em;
+      }
+
+      .login-button {
+        width: 100%;
+        padding: 12px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .login-button:hover {
+        background: #2980b9;
+      }
+
+      .divider {
+        text-align: center;
+        margin: 20px 0;
+        position: relative;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background: #ddd;
+      }
+
+      .divider::before {
+        right: 0;
+      }
+
+      .divider::after {
+        left: 0;
+      }
+
+      .social-login {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .social-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #eee;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .social-button:hover {
+        transform: scale(1.1);
+      }
+
+      .register-link {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+
+      .register-link a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .error-message {
+        color: #e74c3c;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .show-password {
+        position: absolute;
+        left: 12px;
+        top: 38px;
+        color: #666;
+        cursor: pointer;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+      }
+
+      .shake {
+        animation: shake 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="header">
+        <img src="https://via.placeholder.com/120" alt="لوگو" />
+        <h2>خوش آمدید</h2>
+        <p>برای ورود به حساب کاربری، اطلاعات خود را وارد کنید</p>
+      </div>
+
+      <form
+        class="login-form"
+        id="loginForm"
+        onsubmit="return validateForm(event)"
+      >
+        <div class="form-group">
+          <label>ایمیل یا شماره موبایل</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="مثال: example@email.com"
+          />
+          <i class="fas fa-user"></i>
+          <div class="error-message" id="usernameError">
+            لطفاً ایمیل یا شماره موبایل معتبر وارد کنید
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>رمز عبور</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="رمز عبور خود را وارد کنید"
+          />
+          <i class="fas fa-eye show-password" onclick="togglePassword()"></i>
+          <div class="error-message" id="passwordError">
+            رمز عبور باید حداقل ۸ کاراکتر باشد
+          </div>
+        </div>
+
+        <div class="remember-forgot">
+          <label class="remember-me">
+            <input type="checkbox" />
+            <span>مرا به خاطر بسپار</span>
+          </label>
+          <a href="#" class="forgot-password">رمز عبور را فراموش کردم</a>
+        </div>
+
+        <button type="submit" class="login-button">ورود به حساب کاربری</button>
+
+        <div class="register-link">
+          حساب کاربری ندارید؟ <a href="#">ثبت نام کنید</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function validateForm(event) {
+        event.preventDefault();
+        let isValid = true;
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // اعتبارسنجی نام کاربری
+        if (!username) {
+          document.getElementById("usernameError").style.display = "block";
+          document
+            .getElementById("username")
+            .parentElement.classList.add("shake");
+          isValid = false;
+        } else {
+          document.getElementById("usernameError").style.display = "none";
+          document
+            .getElementById("username")
+            .parentElement.classList.remove("shake");
+        }
+
+        // اعتبارسنجی رمز عبور
+        if (password.length < 8) {
+          document.getElementById("passwordError").style.display = "block";
+          document
+            .getElementById("password")
+            .parentElement.classList.add("shake");
+          isValid = false;
+        } else {
+          document.getElementById("passwordError").style.display = "none";
+          document
+            .getElementById("password")
+            .parentElement.classList.remove("shake");
+        }
+
+        if (isValid) {
+          // ارسال فرم
+          console.log("Form submitted:", { username, password });
+          alert("ورود موفقیت‌آمیز بود");
+        }
+
+        return false;
+      }
+
+      function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const icon = document.querySelector(".show-password");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        } else {
+          passwordInput.type = "password";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      }
+
+      function socialLogin(platform) {
+        console.log(`Logging in with ${platform}`);
+        // پیاده‌سازی لاگین با شبکه‌های اجتماعی
+        alert(`درخواست ورود با ${platform}`);
+      }
+
+      // حذف کلاس shake بعد از اتمام انیمیشن
+      document.querySelectorAll(".form-group").forEach((element) => {
+        element.addEventListener("animationend", function () {
+          this.classList.remove("shake");
+        });
+      });
+    </script>
+  </body>
+</html>

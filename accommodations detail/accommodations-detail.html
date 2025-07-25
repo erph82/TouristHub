@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جزئیات اقامتگاه | هتل پارسیان آزادی تهران</title>
+
+    <!-- فونت و استایل‌های اصلی -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/font-face.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- تقویم شمسی -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- تقویم شمسی -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jalaali-js/1.1.5/jalaali.min.css"
+    />
+    <link rel="stylesheet" href="css/accommodation-details.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- استایل‌های سفارشی -->
+    <!-- اسکریپت‌های ضروری -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-date@1.1.0/dist/persian-date.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
+
+    <script src="js/accommodation-details.js"></script>
+  </head>
+  <!-- Replace everything from <body> to before <main> with: -->
+
+<body class="bg-gray-50">
+    <!-- هدر -->
+    <header>
+        <div class="header-container">
+            <div class="flex items-center">
+                <a href="/" class="text-xl font-bold text-blue-600">
+                    <img src="/../home/images/logo.png" alt="لوگو" class="h-10" />
+                </a>
+            </div>
+
+            <nav>
+                <a href="/home">صفحه اصلی</a>
+                <a href="/attractions.html">جاذبه‌های گردشگری</a>
+                <a href="/accommodations">اقامتگاه‌ها</a>
+                <a href="/about">درباره ما</a>
+                <a href="/contact">تماس با ما</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleSearch(true)" class="text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="/login" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    ورود / ثبت‌نام
+                </a>
+                <button class="md:hidden text-gray-600" id="mobileMenuButton">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/">صفحه اصلی</a>
+        <a href="/attractions.html">جاذبه‌های گردشگری</a>
+        <a href="/accommodations">اقامتگاه‌ها</a>
+        <a href="/about">درباره ما</a>
+        <a href="/contact">تماس با ما</a>
+    </div>
+
+    <main class="accommodation-details">
+      <!-- بخش هدر -->
+      <div class="details-header">
+        <div class="container">
+          <h1 class="title">هتل پارسیان آزادی تهران</h1>
+          <div class="meta">
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span class="score">4.8</span>
+              <span class="reviews">(124 نظر)</span>
+            </div>
+            <div class="location">
+              <i class="fas fa-map-marker-alt"></i>
+              تهران، خیابان ولیعصر
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- گالری تصاویر -->
+      <section class="gallery">
+        <div class="main-image">
+          <img src="main-image.jpg" alt="نمای اصلی هتل" />
+        </div>
+        <div class="thumbnail-grid">
+          <img src="image1.jpg" alt="تصویر هتل" />
+          <img src="image2.jpg" alt="تصویر هتل" />
+          <img src="image3.jpg" alt="تصویر هتل" />
+          <img src="image4.jpg" alt="تصویر هتل" />
+          <button class="more-photos">+12 تصویر بیشتر</button>
+        </div>
+      </section>
+
+      <div class="container main-content">
+        <div class="content-wrapper">
+          <!-- توضیحات اصلی -->
+          <section class="description">
+            <h2>درباره اقامتگاه</h2>
+            <p>توضیحات کامل درباره هتل و امکانات آن...</p>
+          </section>
+
+          <!-- امکانات -->
+          <section class="amenities">
+            <h2>امکانات</h2>
+            <div class="amenities-grid">
+              <div class="amenity-item">
+                <i class="fas fa-wifi"></i>
+                اینترنت رایگان
+              </div>
+              <div class="amenity-item">
+                <i class="fas fa-parking"></i>
+                پارکینگ
+              </div>
+              <!-- سایر امکانات -->
+            </div>
+          </section>
+
+          <!-- قوانین -->
+          <section class="rules">
+            <h2>قوانین اقامتگاه</h2>
+            <div class="rules-grid">
+              <div class="rule-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <h3>ساعت ورود و خروج</h3>
+                  <p>ورود: 14:00 | خروج: 12:00</p>
+                </div>
+              </div>
+              <!-- سایر قوانین -->
+            </div>
+          </section>
+
+          <!-- نظرات -->
+          <section class="reviews">
+            <h2>نظرات مهمانان</h2>
+            <div class="reviews-summary">
+              <div class="overall-rating">
+                <div class="score">4.8</div>
+                <div class="total-reviews">از 124 نظر</div>
+              </div>
+              <div class="rating-bars">
+                <!-- نوار امتیازات -->
+              </div>
+            </div>
+            <div class="reviews-list">
+              <!-- لیست نظرات -->
+            </div>
+          </section>
+        </div>
+
+        <!-- سایدبار رزرو -->
+        <aside class="booking-sidebar">
+          <div class="booking-card">
+            <div class="price">
+              <span class="amount">2,500,000</span>
+              <span class="unit">تومان / شب</span>
+            </div>
+
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>تاریخ ورود</label>
+                    <input type="text" id="checkIn" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>تاریخ خروج</label>
+                    <input type="text" id="checkOut" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>تعداد نفرات</label>
+                    <select id="guestCount" class="form-control">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="price-summary" style="display: none;">
+                <div class="price-details">
+                    <div class="price-row stay-price">
+                        <!-- قیمت اقامت د-->
+                    </div>
+                    <div class="price-row tax-price">
+                        <!-- مالیات -->
+                    </div>
+                </div>
+                <div class="total-price">
+                    <!-- جمع کل -->
+                </div>
+            </div>
+            
+
+              <button type="submit" class="book-now">رزرو اقامتگاه</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- فوتر سایت -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>درباره ما</h3>
+            <p>توضیحات مختصر درباره سایت و خدمات آن</p>
+          </div>
+          <div class="footer-section">
+            <h3>لینک‌های مفید</h3>
+            <ul>
+              <li><a href="/faq">سوالات متداول</a></li>
+              <li><a href="/terms">قوانین و مقررات</a></li>
+              <li><a href="/privacy">حریم خصوصی</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>تماس با ما</h3>
+            <p>آدرس: تهران، خیابان ...</p>
+            <p>تلفن: ۰۲۱-XXXXXXXX</p>
+            <p>ایمیل: info@example.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>تمامی حقوق محفوظ است © ۱۴۰۲</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- اسکریپت‌ها -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jalaali-js/1.1.5/jalaali.min.js"></script>
+    <script src="js/accommodation-details.js"></script>
+  </body>
+</html>

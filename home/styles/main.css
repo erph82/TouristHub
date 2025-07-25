@@ -1,0 +1,183 @@
+/* styles/main.css */
+@font-face {
+  font-family: "Vazir";
+  src: url("https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir-Regular.woff2")
+    format("woff2");
+}
+
+body {
+  font-family: "Vazir", sans-serif;
+}
+
+.hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/home/images/heroback.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide {
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.attraction-card {
+  transition: transform 0.3s ease;
+}
+
+.attraction-card:hover {
+  transform: translateY(-5px);
+}
+
+.custom-shadow {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* استایل‌های جستجو */
+.search-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.search-box {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+}
+
+.search-box.active,
+.search-overlay.active {
+  display: block;
+}
+
+.search-results {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.search-result-item:hover {
+  background-color: #f3f4f6;
+}
+/* اضافه کردن به styles/main.css */
+.datepicker-plot-area {
+  font-family: "Vazir", sans-serif !important;
+}
+
+.datepicker-plot-area .datepicker-day-view .table-days td span {
+  font-size: 14px;
+}
+
+.datepicker-plot-area .datepicker-year-view .year-item,
+.datepicker-plot-area .datepicker-month-view .month-item {
+  font-size: 13px;
+}
+
+.datepicker-plot-area .toolbox .btn-today {
+  font-size: 13px;
+}
+
+.datepicker-plot-area .datepicker-header .btn-next,
+.datepicker-plot-area .datepicker-header .btn-switch,
+.datepicker-plot-area .datepicker-header .btn-prev {
+  font-size: 14px;
+}
+
+.datepicker-plot-area {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem;
+}
+
+.datepicker-plot-area .datepicker-day-view .table-days td.selected span {
+  background-color: #2563eb !important;
+  text-shadow: none;
+}
+
+.datepicker-plot-area .datepicker-day-view .table-days td span:hover {
+  background-color: #bfdbfe !important;
+  text-shadow: none;
+}
+
+.datepicker-plot-area .toolbox .btn-today {
+  color: #2563eb;
+}
+.datepicker-plot-area {
+  font-family: "Vazirmatn", tahoma !important;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.datepicker-plot-area .datepicker-day-view .table-days td span,
+.datepicker-plot-area .datepicker-year-view .year-item,
+.datepicker-plot-area .datepicker-month-view .month-item {
+  font-family: "Vazirmatn", tahoma !important;
+  font-size: 14px;
+}
+
+.datepicker-plot-area .datepicker-day-view .table-days td span {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+}
+
+.datepicker-plot-area .datepicker-header .btn-next,
+.datepicker-plot-area .datepicker-header .btn-prev,
+.datepicker-plot-area .datepicker-header .btn-switch {
+  font-family: "Vazirmatn", tahoma !important;
+  font-size: 14px;
+}
+
+.datepicker-plot-area .toolbox .btn-today {
+  font-family: "Vazirmatn", tahoma !important;
+}
+.attractionsSwiper {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.swiper-slide {
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #2563eb;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2563eb;
+}
+
+/* برای موبایل */
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}

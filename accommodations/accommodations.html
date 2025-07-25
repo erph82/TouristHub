@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اقامتگاه‌ها</title>
+
+    <!-- Persian Datepicker -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.min.css"
+    />
+
+    <!-- فونت ایران‌سنس -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/iran-sans@v1.0.0/dist/font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- نوو اسلایدر -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css"
+    />
+
+    <!-- AOS Animation -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/accommodations.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/persian-date@latest/dist/persian-date.min.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.min.js"></script>
+  </head>
+  <body class="bg-gray-50">
+    <!-- هدر -->
+
+    <!-- Replace existing header with this -->
+    <div>
+      <div class="header-container">
+        <div class="flex items-center">
+          <a href="/" class="text-xl font-bold text-blue-600">
+            <img src="/../home/images/logo.png" alt="لوگو" class="h-10" />
+          </a>
+        </div>
+
+        <nav>
+          <a href="/home">صفحه اصلی</a>
+          <a href="/attractions.html">جاذبه‌های گردشگری</a>
+          <a href="/accommodations">اقامتگاه‌ها</a>
+          <a href="/about">درباره ما</a>
+          <a href="/contact">تماس با ما</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <button
+            onclick="toggleSearch(true)"
+            class="text-gray-600 hover:text-blue-600"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+          <a
+            href="/login"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          >
+            ورود / ثبت‌نام
+          </a>
+          <button class="md:hidden text-gray-600" id="mobileMenuButton">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">صفحه اصلی</a>
+      <a href="/attractions.html">جاذبه‌های گردشگری</a>
+      <a href="/accommodations">اقامتگاه‌ها</a>
+      <a href="/about">درباره ما</a>
+      <a href="/contact">تماس با ما</a>
+    </div>
+    <div class="hero">
+      <h1>اقامتگاه‌های ما</h1>
+      <p>بهترین اقامتگاه‌ها برای اقامتی خاطره‌انگیز</p>
+    </div>
+
+    <main class="container">
+      <!-- بخش فیلترها -->
+      <aside class="filters-section" data-aos="fade-left">
+        <div class="filters-header">
+          <h2>فیلترها</h2>
+          <button id="clearFilters">پاک کردن فیلترها</button>
+        </div>
+
+        <!-- فیلتر نوع اقامتگاه -->
+        <div class="filter-group">
+          <h3>نوع اقامتگاه</h3>
+          <div class="checkbox-group">
+            <label>
+              <input
+                type="checkbox"
+                name="type"
+                value="hotel"
+                class="filter-checkbox"
+              />
+              هتل
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="type"
+                value="apartment"
+                class="filter-checkbox"
+              />
+              آپارتمان
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="type"
+                value="villa"
+                class="filter-checkbox"
+              />
+              ویلا
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="type"
+                value="ecolodge"
+                class="filter-checkbox"
+              />
+              اقامتگاه بوم‌گردی
+            </label>
+          </div>
+        </div>
+
+        <!-- فیلتر قیمت -->
+        <div class="filter-group">
+          <h3>محدوده قیمت (تومان)</h3>
+          <div id="priceRange" class="price-slider"></div>
+          <div class="price-inputs">
+            <div>
+              <span>از</span>
+              <input type="text" id="minPrice" class="price-input" />
+            </div>
+            <div>
+              <span>تا</span>
+              <input type="text" id="maxPrice" class="price-input" />
+            </div>
+          </div>
+        </div>
+
+        <!-- فیلتر امکانات -->
+        <div class="filter-group">
+          <h3>امکانات</h3>
+          <div class="checkbox-group">
+            <label>
+              <input
+                type="checkbox"
+                name="amenities"
+                value="wifi"
+                class="filter-checkbox"
+              />
+              وای‌فای
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="amenities"
+                value="parking"
+                class="filter-checkbox"
+              />
+              پارکینگ
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="amenities"
+                value="pool"
+                class="filter-checkbox"
+              />
+              استخر
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="amenities"
+                value="breakfast"
+                class="filter-checkbox"
+              />
+              صبحانه
+            </label>
+          </div>
+        </div>
+
+        <!-- فیلتر رتبه -->
+        <div class="filter-group">
+          <h3>حداقل امتیاز</h3>
+          <div class="rating-filter">
+            <div class="rating-option" data-rating="5">
+              <span class="stars">★★★★★</span>
+              <span class="rating-text">5 ستاره</span>
+            </div>
+            <div class="rating-option" data-rating="4">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-text">4 ستاره و بالاتر</span>
+            </div>
+            <div class="rating-option" data-rating="3">
+              <span class="stars">★★★☆☆</span>
+              <span class="rating-text">3 ستاره و بالاتر</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- بخش نمایش اقامتگاه‌ها -->
+      <section class="accommodations-section">
+        <!-- نوار جستجو و مرتب‌سازی -->
+        <div class="search-sort-bar" data-aos="fade-down">
+          <div class="search-box">
+            <input
+              type="text"
+              placeholder="جستجو در اقامتگاه‌ها..."
+              id="searchInput"
+            />
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="sort-box">
+            <select id="sortSelect">
+              <option value="recommended">پیشنهادی</option>
+              <option value="price-low">قیمت: کم به زیاد</option>
+              <option value="price-high">قیمت: زیاد به کم</option>
+              <option value="rating">بیشترین امتیاز</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- گرید اقامتگاه‌ها -->
+        <div class="accommodations-grid" id="accommodationsGrid">
+          <!-- نمونه کارت اقامتگاه -->
+          <div
+            class="accommodation-card"
+            data-aos="fade-up"
+            data-type="hotel"
+            data-amenities="wifi,parking,pool"
+            data-price="250000"
+            data-rating="4"
+          >
+            <div class="accommodation-image">
+              <img src="images/hotel1.jpg" alt="هتل پارسیان" />
+              <div class="type-badge">هتل</div>
+              <button class="favorite-btn">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="accommodation-content">
+              <div class="accommodation-header">
+                <h3>هتل پارسیان</h3>
+                <div class="rating">
+                  <i class="fas fa-star"></i>
+                  <span>4.8</span>
+                </div>
+              </div>
+              <div class="accommodation-location">
+                <i class="fas fa-map-marker-alt"></i>
+                تهران، خیابان ولیعصر
+              </div>
+              <div class="accommodation-amenities">
+                <span><i class="fas fa-wifi"></i> وای‌فای</span>
+                <span><i class="fas fa-parking"></i> پارکینگ</span>
+                <span><i class="fas fa-swimming-pool"></i> استخر</span>
+              </div>
+              <div class="accommodation-footer">
+                <div class="price">
+                  <span class="amount">۲,۵۰۰,۰۰۰</span>
+                  <span class="unit">تومان / شب</span>
+                </div>
+                <a href="#" class="details-btn">مشاهده و رزرو</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- کارت‌های بیشتر... -->
+        </div>
+
+        <!-- دکمه بارگذاری بیشتر -->
+        <div class="load-more" data-aos="fade-up">
+          <button id="loadMoreBtn">
+            نمایش بیشتر
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>درباره ما</h3>
+            <p>توضیحات</p>
+          </div>
+          <div class="footer-section">
+            <h3>لینک‌های مفید</h3>
+            <ul>
+              <li><a href="/faq">سوالات متداول</a></li>
+              <li><a href="/terms">قوانین و مقررات</a></li>
+              <li><a href="/privacy">حریم خصوصی</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>تماس با ما</h3>
+            <p>آدرس: ...</p>
+            <p>تلفن: ۰۲۱-XXXXXXXX</p>
+            <p>ایمیل: erfan@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>تمامی حقوق محفوظ است © ۱۴۰۲</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- اسکریپت‌ها -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/accommodations.js"></script>
+  </body>
+</html>
